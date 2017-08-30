@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Input the list of city name from .txt file in /home/weiji/tmp/data_flow
-filename="/home/weiji/tmp/data_deepflow/data_flow/city_list.txt"
+filename="/address/of/city_list/from/create_file_list.txt"
+out_filename="/address/of/your/output/flow_files/"  # don't forget last "/"
 IFS=$'\n' Address_file=($(cat $filename))
 #echo ${#Address_file[*]} count the amount of city
 for m in `seq 0 ${#Address_file[*]}`; #traversing all files
@@ -29,7 +30,7 @@ do
         echo -e "\e[1;31m Creating the Flow_Image of $i th Frame ... \e[0m"
         if [ $Video_number1 -eq $Video_number2 ]
         then 
-            ./fastdeepflow $a1 $a2 /home/weiji/tmp/data_deepflow/Image_flow/$city_name/$Image_name1.flo -sintel
+            ./fastdeepflow $a1 $a2 $out_filename$city_name/$Image_name1.flo -sintel
         fi
     done 
     
